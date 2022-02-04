@@ -4,11 +4,12 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--News-->
         <scene sceneID="J0P-JD-Z0g">
             <objects>
                 <tableViewController id="FSl-8Z-vDi" sceneMemberID="viewController">
@@ -16,6 +17,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6ZF-S2-FtR">
+                            <rect key="frame" x="0.0" y="167" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" rowHeight="100" id="ZhJ-g9-ts6">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="100"/>
@@ -84,6 +92,9 @@
                                         <constraint firstItem="jkO-43-g8V" firstAttribute="leading" secondItem="AH5-Z3-XzX" secondAttribute="trailing" constant="10" id="zEf-Mq-iwL"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Vbd-Xl-9k1" kind="show" id="bWK-jd-3a4"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -91,11 +102,29 @@
                             <outlet property="delegate" destination="FSl-8Z-vDi" id="9wx-Li-3LC"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="VEr-rn-h9G"/>
+                    <navigationItem key="navigationItem" title="News" id="VEr-rn-h9G">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="JOv-hM-Q8V"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5EG-Wr-ENH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="144.92753623188406" y="51.5625"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Gxr-3P-QNt">
+            <objects>
+                <viewController id="Vbd-Xl-9k1" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iQX-yB-9js">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="hqq-QV-AcD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Mxb-w1-W4G"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T0x-bH-0z7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="977" y="52"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bQq-y7-FvE">
