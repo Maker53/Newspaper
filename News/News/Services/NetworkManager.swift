@@ -39,7 +39,6 @@ class NetworkManager {
             } catch {
                 completion(.failure(.decodingError))
             }
-
-        }
+        }.resume()
     }
 }
