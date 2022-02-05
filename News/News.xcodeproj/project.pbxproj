@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		856514CA27AEE52A005D3BD9 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856514C927AEE52A005D3BD9 /* StorageManager.swift */; };
 		858E4E7C27AD92FA00527446 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858E4E7B27AD92FA00527446 /* AppDelegate.swift */; };
 		858E4E7E27AD92FA00527446 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858E4E7D27AD92FA00527446 /* SceneDelegate.swift */; };
 		858E4E8027AD92FA00527446 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858E4E7F27AD92FA00527446 /* NewsDetailViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		856514C927AEE52A005D3BD9 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		858E4E7827AD92FA00527446 /* News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		858E4E7B27AD92FA00527446 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		858E4E7D27AD92FA00527446 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				858E4E9927AE5A4000527446 /* NetworkManager.swift */,
+				856514C927AEE52A005D3BD9 /* StorageManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				858E4E8027AD92FA00527446 /* NewsDetailViewController.swift in Sources */,
 				858E4EA127AE815F00527446 /* NewsImageView.swift in Sources */,
 				858E4E9F27AE6AF400527446 /* NewsTableViewCell.swift in Sources */,
+				856514CA27AEE52A005D3BD9 /* StorageManager.swift in Sources */,
 				858E4E7C27AD92FA00527446 /* AppDelegate.swift in Sources */,
 				858E4E9A27AE5A4000527446 /* NetworkManager.swift in Sources */,
 				858E4E9C27AE6A5300527446 /* NewsViewController.swift in Sources */,

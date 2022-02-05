@@ -26,7 +26,5 @@ class NewsDetailViewController: UIViewController {
         
         newsImage.fetchImage(from: article?.urlToImage ?? "")
     }
-
-
 }
 
