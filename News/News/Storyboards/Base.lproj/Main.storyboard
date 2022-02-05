@@ -83,6 +83,18 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="News" id="VEr-rn-h9G">
                         <barButtonItem key="backBarButtonItem" title="Back" id="JOv-hM-Q8V"/>
+                        <barButtonItem key="leftBarButtonItem" image="arrow.left" catalog="system" id="Mak-WK-6Zb">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="updateData:" destination="FSl-8Z-vDi" id="6AF-Zv-8yK"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" tag="1" image="arrow.right" catalog="system" id="nPa-o5-380">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="updateData:" destination="FSl-8Z-vDi" id="zHZ-x1-nx7"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5EG-Wr-ENH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -183,6 +195,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.left" catalog="system" width="128" height="98"/>
+        <image name="arrow.right" catalog="system" width="128" height="98"/>
         <image name="eye.fill" catalog="system" width="128" height="78"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

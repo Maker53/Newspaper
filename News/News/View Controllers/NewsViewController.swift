@@ -11,12 +11,13 @@ class NewsViewController: UITableViewController {
 
     // MARK: - Private Properties
     private var news: News!
+    private var numberOfPage = 1
     
     // MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchData(from: Link(page: "1").api)
+        fetchData(from: Link(page: 1).api)
     }
 
     // MARK: - Table view data source
@@ -30,6 +31,17 @@ class NewsViewController: UITableViewController {
         cell.configure(with: article)
         
         return cell
+    }
+    
+    // MARK: - Override Methods
+    @IBAction func updateData(_ sender: UIBarButtonItem) {
+        if sender.tag == 1, numberOfPage < 5 {
+            numberOfPage += 1
+            fetchData(from: Link(page: numberOfPage).api)
+        } else if sender.tag == 0, numberOfPage > 1 {
+            numberOfPage -= 1
+            fetchData(from: Link(page: numberOfPage).api)
+        }
     }
     
     // MARK: - Private Methods
