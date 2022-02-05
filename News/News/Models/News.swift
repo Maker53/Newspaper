@@ -18,6 +18,12 @@ struct Article: Decodable {
     let urlToImage: String?
 }
 
-enum Link: String {
-    case newsApi = "https://newsapi.org/v2/everything?domains=bloomberg.com&pageSize=100&apiKey=cc18ddf89acd415ea93001a81c07bc96"
+struct Link {
+    let api: String
+    
+    init(page: String) {
+        api = "https://newsapi.org/v2/everything?domains=bloomberg.com&page=\(page)&apiKey=cc18ddf89acd415ea93001a81c07bc96"
+    }
 }
+
+
