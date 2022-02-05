@@ -34,6 +34,15 @@ class NewsViewController: UITableViewController {
         return cell
     }
     
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+//        let cell = tableView.cellForRow(at: indexPath) as! NewsTableViewCell
+        let article = news?.articles[indexPath.row]
+        guard let newsDetailVC = segue.destination as? NewsDetailViewController else { return }
+        newsDetailVC.article = article
+    }
+    
     // MARK: - IB Actions
     @IBAction func updateData(_ sender: UIBarButtonItem) {
         if sender.tag == 1, numberOfPage < 5 {

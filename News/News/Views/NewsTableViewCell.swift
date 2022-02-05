@@ -17,10 +17,12 @@ class NewsTableViewCell: UITableViewCell {
             newsImage.layer.cornerRadius = 10
         }
     }
+    
+    var viewsCount = 0
         
     func configure(with article: Article?) {
         newsTitleLabel.text = article?.title ?? ""
-        viewsCounterLabel.text = "1"
+        viewsCounterLabel.text = "\(viewsCount)"
         newsImage.fetchImage(from: article?.urlToImage ?? "")
     }
 }
