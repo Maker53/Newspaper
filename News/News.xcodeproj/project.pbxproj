@@ -14,6 +14,7 @@
 		858E4E8527AD930100527446 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 858E4E8427AD930100527446 /* Assets.xcassets */; };
 		858E4E8827AD930100527446 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 858E4E8627AD930100527446 /* LaunchScreen.storyboard */; };
 		858E4E9527AE4E8900527446 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858E4E9427AE4E8900527446 /* News.swift */; };
+		858E4E9A27AE5A4000527446 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858E4E9927AE5A4000527446 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		858E4E8727AD930100527446 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		858E4E8927AD930100527446 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		858E4E9427AE4E8900527446 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		858E4E9927AE5A4000527446 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				858E4E9227AD94B200527446 /* View Controllers */,
 				858E4E9027AD948F00527446 /* Storyboards */,
 				858E4E9327AE4E6400527446 /* Models */,
+				858E4E9827AE5A2C00527446 /* Services */,
 				858E4E8F27AD948500527446 /* App */,
 				858E4E9127AD949900527446 /* Resources */,
 			);
@@ -108,6 +111,14 @@
 				858E4E9427AE4E8900527446 /* News.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		858E4E9827AE5A2C00527446 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				858E4E9927AE5A4000527446 /* NetworkManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +194,7 @@
 			files = (
 				858E4E8027AD92FA00527446 /* ViewController.swift in Sources */,
 				858E4E7C27AD92FA00527446 /* AppDelegate.swift in Sources */,
+				858E4E9A27AE5A4000527446 /* NetworkManager.swift in Sources */,
 				858E4E9527AE4E8900527446 /* News.swift in Sources */,
 				858E4E7E27AD92FA00527446 /* SceneDelegate.swift in Sources */,
 			);
