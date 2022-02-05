@@ -17,6 +17,7 @@ class NewsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupRefreshControl()
         fetchData(from: Link(page: 1).api)
     }
 
@@ -33,7 +34,7 @@ class NewsViewController: UITableViewController {
         return cell
     }
     
-    // MARK: - Override Methods
+    // MARK: - IB Actions
     @IBAction func updateData(_ sender: UIBarButtonItem) {
         if sender.tag == 1, numberOfPage < 5 {
             numberOfPage += 1
@@ -51,6 +52,9 @@ class NewsViewController: UITableViewController {
             case .success(let data):
                 self.news = data
                 self.tableView.reloadData()
+                if self.refreshControl != nil {
+                    self.refreshControl?.endRefreshing()
+                }
             case .failure(let error):
                 print(error)
             }
@@ -58,3 +62,15 @@ class NewsViewController: UITableViewController {
     }
 }
 
+// MARK: - Refresh Control
+extension NewsViewController {
+    @objc private func downloadData() {
+        fetchData(from: Link(page: numberOfPage).api)
+    }
+    
+    private func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl?.addTarget(self, action: #selector(downloadData), for: .valueChanged)
+    }
+}
