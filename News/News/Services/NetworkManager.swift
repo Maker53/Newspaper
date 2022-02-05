@@ -30,7 +30,6 @@ class NetworkManager {
                 print(error?.localizedDescription ?? "No error description")
                 return
             }
-            
             do {
                 let type = try JSONDecoder().decode(T.self, from: data)
                 DispatchQueue.main.async {
@@ -48,16 +47,17 @@ class ImageManager {
     
     private init() {}
     
-    func fetchImage(from url: String, completion: @escaping(Result<Data, NetworkError>) -> Void) {
-        guard let url = URL(string: url) else {
-            completion(.failure(.invalidURL))
-            return
-        }
-        
-        do {
-            try completion(.success(Data(contentsOf: url)))
-        } catch {
-            completion(.failure(.noData))
-        }
+    func fetchImage(from url: URL, completion: @escaping(Result<(Data, URLResponse), NetworkError>) -> Void) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, let response = response else {
+                completion(.failure(.noData))
+                print(error?.localizedDescription ?? "no error description")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                completion(.success((data, response)))
+            }
+        }.resume()
     }
 }
