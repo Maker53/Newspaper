@@ -30,6 +30,7 @@ class NetworkManager {
                 print(error?.localizedDescription ?? "No error description")
                 return
             }
+            
             do {
                 let type = try JSONDecoder().decode(T.self, from: data)
                 DispatchQueue.main.async {

@@ -9,16 +9,18 @@ import UIKit
 
 class NewsTableViewCell: UITableViewCell {
 
-    @IBOutlet var newsImage: UIImageView!
     @IBOutlet var newsTitleLabel: UILabel!
-    @IBOutlet var additionTimeLabel: UILabel!
     @IBOutlet var viewsCounterLabel: UILabel!
-        
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    @IBOutlet var newsImage: NewsImageView! {
+        didSet {
+            newsImage.backgroundColor = .systemGray
+            newsImage.layer.cornerRadius = 10
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+        
+    func configure(with article: Article?) {
+        newsTitleLabel.text = article?.title ?? ""
+        viewsCounterLabel.text = "1"
+        newsImage.fetchImage(from: article?.urlToImage ?? "")
     }
 }
