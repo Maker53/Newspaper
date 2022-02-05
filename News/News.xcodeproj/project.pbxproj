@@ -16,6 +16,7 @@
 		858E4E9527AE4E8900527446 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858E4E9427AE4E8900527446 /* News.swift */; };
 		858E4E9A27AE5A4000527446 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858E4E9927AE5A4000527446 /* NetworkManager.swift */; };
 		858E4E9C27AE6A5300527446 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858E4E9B27AE6A5300527446 /* NewsViewController.swift */; };
+		858E4E9F27AE6AF400527446 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858E4E9E27AE6AF400527446 /* NewsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		858E4E9427AE4E8900527446 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		858E4E9927AE5A4000527446 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		858E4E9B27AE6A5300527446 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		858E4E9E27AE6AF400527446 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			children = (
 				858E4E9227AD94B200527446 /* View Controllers */,
 				858E4E9027AD948F00527446 /* Storyboards */,
+				858E4E9D27AE6ADA00527446 /* Views */,
 				858E4E9327AE4E6400527446 /* Models */,
 				858E4E9827AE5A2C00527446 /* Services */,
 				858E4E8F27AD948500527446 /* App */,
@@ -122,6 +125,14 @@
 				858E4E9927AE5A4000527446 /* NetworkManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		858E4E9D27AE6ADA00527446 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				858E4E9E27AE6AF400527446 /* NewsTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				858E4E8027AD92FA00527446 /* ViewController.swift in Sources */,
+				858E4E9F27AE6AF400527446 /* NewsTableViewCell.swift in Sources */,
 				858E4E7C27AD92FA00527446 /* AppDelegate.swift in Sources */,
 				858E4E9A27AE5A4000527446 /* NetworkManager.swift in Sources */,
 				858E4E9C27AE6A5300527446 /* NewsViewController.swift in Sources */,

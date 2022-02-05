@@ -26,7 +26,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" rowHeight="100" id="ZhJ-g9-ts6">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" rowHeight="100" id="ZhJ-g9-ts6" customClass="NewsTableViewCell" customModule="News" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZhJ-g9-ts6" id="9sD-S1-Smh">
@@ -94,6 +94,10 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="additionTimeLabel" destination="4dh-cL-kfk" id="WRn-rY-rrj"/>
+                                    <outlet property="newsImage" destination="AH5-Z3-XzX" id="KfN-pY-Ddl"/>
+                                    <outlet property="newsTitleLabel" destination="aQp-BX-FFf" id="u03-eU-18d"/>
+                                    <outlet property="viewsCounterLabel" destination="lSi-cb-Dki" id="hnX-B1-GW7"/>
                                     <segue destination="Vbd-Xl-9k1" kind="show" id="bWK-jd-3a4"/>
                                 </connections>
                             </tableViewCell>
