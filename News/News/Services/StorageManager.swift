@@ -15,22 +15,23 @@ class StorageManager {
     
     private init() {}
     
-    func save(article: Data) {
-        var articles = fetchArticles()
-        articles.append(article)
-        userDefaults.set(articles, forKey: key)
+    func save(news: News) {
+        var newsList = fetchArticles()
+        newsList.append(news)
+        guard let data = try? JSONEncoder().encode(newsList) else { return }
+        userDefaults.set(data, forKey: key)
     }
     
-    func fetchArticles() -> [Data] {
-        if let articles = userDefaults.value(forKey: key) as? [Data] {
-            return articles
-        }
-        return []
+    func fetchArticles() -> [News] {
+        guard let data = userDefaults.data(forKey: key) else { return [] }
+        guard let newsList = try? JSONDecoder().decode([News].self, from: data) else { return [] }
+        return newsList
     }
     
     func deleteArticle(at index: Int) {
-        var articles = fetchArticles()
-        articles.remove(at: index)
-        userDefaults.set(articles, forKey: key)
+        var newsList = fetchArticles()
+        newsList.remove(at: index)
+        guard let data = try? JSONEncoder().encode(newsList) else { return }
+        userDefaults.set(data, forKey: key)
     }
 }
