@@ -11,19 +11,20 @@ class NewsViewController: UITableViewController {
 
     // MARK: - Private Properties
     private var news: News!
-    private var numberOfPage = 1
+    private var currentPage = 1
     
     // MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        fetchStoredData()
+//        fetchData(forPage: currentPage)
         setupRefreshControl()
-        fetchData(from: Link(page: 1).api)
     }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        20
+        news?.articles.count ?? 20
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,22 +46,25 @@ class NewsViewController: UITableViewController {
     
     // MARK: - IB Actions
     @IBAction func updateData(_ sender: UIBarButtonItem) {
-        if sender.tag == 1, numberOfPage < 5 {
-            numberOfPage += 1
-            fetchData(from: Link(page: numberOfPage).api)
-        } else if sender.tag == 0, numberOfPage > 1 {
-            numberOfPage -= 1
-            fetchData(from: Link(page: numberOfPage).api)
+        if sender.tag == 1, currentPage < 5 {
+            currentPage += 1
+            fetchStoredData()
+//            fetchData(forPage: currentPage)
+        } else if sender.tag == 0, currentPage > 1 {
+            currentPage -= 1
+            fetchStoredData()
+//            fetchData(forPage: currentPage)
         }
     }
     
     // MARK: - Private Methods
-    private func fetchData(from url: String) {
-        NetworkManager.shared.fetch(dataType: News.self, from: url) { result in
+    private func fetchData(forPage page: Int) {
+        NetworkManager.shared.fetch(dataType: News.self, forPage: page) { result in
             switch result {
-            case .success(let data):
-                self.news = data
+            case .success(let type):
+                self.news = type
                 self.tableView.reloadData()
+                StorageManager.shared.save(news: type, forPageKey: "\(self.currentPage)")
                 if self.refreshControl != nil {
                     self.refreshControl?.endRefreshing()
                 }
@@ -69,12 +73,21 @@ class NewsViewController: UITableViewController {
             }
         }
     }
+    
+    private func fetchStoredData() {
+        if let newsForPage = StorageManager.shared.fetchNews(forPageKey: "\(currentPage)") {
+            news = newsForPage
+            tableView.reloadData()
+        } else {
+            fetchData(forPage: currentPage)
+        }
+    }
 }
 
 // MARK: - Refresh Control
 extension NewsViewController {
     @objc private func downloadData() {
-        fetchData(from: Link(page: numberOfPage).api)
+        fetchData(forPage: currentPage)
     }
     
     private func setupRefreshControl() {

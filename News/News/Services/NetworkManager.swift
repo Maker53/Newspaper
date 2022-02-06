@@ -18,8 +18,9 @@ class NetworkManager {
     
     private init() {}
     
-    func fetch<T: Decodable>(dataType: T.Type, from url: String, completion: @escaping(Result<T, NetworkError>) -> Void) {
-        guard let url = URL(string: url) else {
+    func fetch<T: Decodable>(dataType: T.Type, forPage page: Int, completion: @escaping(Result<T, NetworkError>) -> Void) {
+        let urlString = "https://newsapi.org/v2/everything?domains=bloomberg.com&page=\(page)&apiKey=cc18ddf89acd415ea93001a81c07bc96"
+        guard let url = URL(string: urlString) else {
             completion(.failure(.invalidURL))
             return
         }
