@@ -24,4 +24,13 @@ class StorageManager {
         guard let news = try? JSONDecoder().decode(News.self, from: data) else { return nil }
         return news
     }
+    
+    func saveImageData(data: Data, withKey key: String) {
+        userDefaults.set(data, forKey: key)
+    }
+    
+    func fetchImageData(forKey key: String) -> Data? {
+        guard let data = userDefaults.data(forKey: key) else { return nil }
+        return data
+    }
 }

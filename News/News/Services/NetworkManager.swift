@@ -49,16 +49,16 @@ class ImageManager {
     
     private init() {}
     
-    func fetchImage(from url: URL, completion: @escaping(Result<(Data, URLResponse), NetworkError>) -> Void) {
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data, let response = response else {
+    func fetchImage(from url: URL, completion: @escaping(Result<Data, NetworkError>) -> Void) {
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data else {
                 completion(.failure(.noData))
                 print(error?.localizedDescription ?? "no error description")
                 return
             }
             
             DispatchQueue.main.async {
-                completion(.success((data, response)))
+                completion(.success(data))
             }
         }.resume()
     }

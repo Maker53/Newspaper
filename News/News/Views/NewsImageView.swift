@@ -15,7 +15,7 @@ class NewsImageView: UIImageView {
         }
         
         // Use image from cache
-        if let cachedImage = getCachedImage(from: imageURL) {
+        if let cachedImage = getImageData(forKey: url) {
             image = cachedImage
             return
         }
@@ -23,28 +23,21 @@ class NewsImageView: UIImageView {
         // Download image from url
         ImageManager.shared.fetchImage(from: imageURL) { result in
             switch result {
-            case .success((let data, let response)):
-                self.saveDataToCache(with: data, and: response)
-                if imageURL.lastPathComponent == response.url?.lastPathComponent {
-                    self.image = UIImage(data: data)
-                }
+            case .success(let data):
+                self.saveData(data: data, withKey: url)
+                self.image = UIImage(data: data)
             case .failure(let error):
                 print(error)
             }
         }
     }
     
-    private func saveDataToCache(with data: Data, and response: URLResponse) {
-        let cachedURLResponse = CachedURLResponse(response: response, data: data)
-        guard let url = response.url else { return }
-        let request = URLRequest(url: url)
-        URLCache.shared.storeCachedResponse(cachedURLResponse, for: request)
+    private func saveData(data: Data, withKey key: String) {
+        StorageManager.shared.saveImageData(data: data, withKey: key)
     }
     
-    private func getCachedImage(from url: URL) -> UIImage? {
-        let request = URLRequest(url: url)
-        guard let cachedResponse = URLCache.shared.cachedResponse(for: request) else { return nil }
-        guard url.lastPathComponent == cachedResponse.response.url?.lastPathComponent else { return nil }
-        return UIImage(data: cachedResponse.data)
+    private func getImageData(forKey key: String) -> UIImage? {
+        guard let data = StorageManager.shared.fetchImageData(forKey: key) else { return nil }
+        return UIImage(data: data)
     }
 }
