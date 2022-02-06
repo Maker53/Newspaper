@@ -9,6 +9,7 @@ import UIKit
 
 class NewsTableViewCell: UITableViewCell {
 
+    // MARK: - IB Outlets
     @IBOutlet var newsTitleLabel: UILabel!
     @IBOutlet var viewsCounterLabel: UILabel!
     @IBOutlet var newsImage: NewsImageView! {
@@ -18,8 +19,10 @@ class NewsTableViewCell: UITableViewCell {
         }
     }
     
+    // MARK: - Public Properties
     var viewsCounter = 0
-        
+    
+    // MARK: - Public Methods
     func configure(with article: Article?) {
         getViewsCounterValue(forKey: article?.url ?? "")
         newsTitleLabel.text = article?.title ?? ""
@@ -32,7 +35,8 @@ class NewsTableViewCell: UITableViewCell {
         StorageManager.shared.saveViewsCounterValue(count: viewsCounter, forKey: key)
     }
     
-    func getViewsCounterValue(forKey key: String) {
+    // MARK: - Private Methods
+    private func getViewsCounterValue(forKey key: String) {
         viewsCounter = StorageManager.shared.fetchViewsCounterValue(forKey: key)
     }
 }

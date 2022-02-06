@@ -14,6 +14,7 @@ class StorageManager {
     
     private init() {}
     
+    // MARK: - For Model
     func save(news: News, forPageKey key: String) {
         guard let data = try? JSONEncoder().encode(news) else { return }
         userDefaults.set(data, forKey: key)
@@ -25,6 +26,7 @@ class StorageManager {
         return news
     }
     
+    // MARK: - For Image
     func saveImageData(data: Data, withKey key: String) {
         userDefaults.set(data, forKey: key)
     }
@@ -34,6 +36,7 @@ class StorageManager {
         return data
     }
     
+    // MARK: - For Views Counter
     func saveViewsCounterValue(count: Int, forKey key: String) {
         userDefaults.set(count, forKey: key)
     }
