@@ -18,11 +18,21 @@ class NewsTableViewCell: UITableViewCell {
         }
     }
     
-    var viewsCount = 0
+    var viewsCounter = 0
         
     func configure(with article: Article?) {
+        getViewsCounterValue(forKey: article?.url ?? "")
         newsTitleLabel.text = article?.title ?? ""
-        viewsCounterLabel.text = "\(viewsCount)"
+        viewsCounterLabel.text = "\(viewsCounter)"
         newsImage.fetchImage(from: article?.urlToImage ?? "")
+    }
+    
+    func updateViewsCounterValue(forKey key: String) {
+        viewsCounter += 1
+        StorageManager.shared.saveViewsCounterValue(count: viewsCounter, forKey: key)
+    }
+    
+    func getViewsCounterValue(forKey key: String) {
+        viewsCounter = StorageManager.shared.fetchViewsCounterValue(forKey: key)
     }
 }

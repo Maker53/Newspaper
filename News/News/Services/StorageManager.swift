@@ -33,4 +33,12 @@ class StorageManager {
         guard let data = userDefaults.data(forKey: key) else { return nil }
         return data
     }
+    
+    func saveViewsCounterValue(count: Int, forKey key: String) {
+        userDefaults.set(count, forKey: key)
+    }
+    
+    func fetchViewsCounterValue(forKey key: String) -> Int {
+        return userDefaults.integer(forKey: key)
+    }
 }

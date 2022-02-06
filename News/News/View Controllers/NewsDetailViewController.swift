@@ -13,9 +13,11 @@ class NewsDetailViewController: UIViewController {
     @IBOutlet var descriptionNewsLabel: UILabel!
     @IBOutlet var linkToNewsLabel: UILabel!
     @IBOutlet var newsImage: NewsImageView!
-    @IBOutlet var viewsConter: UILabel!
+    @IBOutlet var viewsCounter: UILabel!
     
     var article: Article!
+    var delegate: NewsDetailViewControllerDelegate!
+    var counter = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +25,14 @@ class NewsDetailViewController: UIViewController {
         newsTitleLabel.text = article.title
         descriptionNewsLabel.text = article.description
         linkToNewsLabel.text = article.url
+        viewsCounter.text = "\(counter)"
         
         newsImage.fetchImage(from: article?.urlToImage ?? "")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate.reloadData()
     }
 }
 

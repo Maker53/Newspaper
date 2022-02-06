@@ -177,7 +177,7 @@
                         <outlet property="linkToNewsLabel" destination="oBS-Yy-bdL" id="6Ci-Se-vHQ"/>
                         <outlet property="newsImage" destination="GEa-pD-hT2" id="G6Z-XH-n1Y"/>
                         <outlet property="newsTitleLabel" destination="qiu-Kh-Fuo" id="eWE-bL-pq9"/>
-                        <outlet property="viewsConter" destination="IQt-5k-FoS" id="Rby-63-Yeb"/>
+                        <outlet property="viewsCounter" destination="IQt-5k-FoS" id="iAf-dj-UtN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T0x-bH-0z7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

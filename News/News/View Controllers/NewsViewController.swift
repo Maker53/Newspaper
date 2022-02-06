@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol NewsDetailViewControllerDelegate {
+    func reloadData()
+}
+
 class NewsViewController: UITableViewController {
 
     // MARK: - Private Properties
@@ -18,7 +22,6 @@ class NewsViewController: UITableViewController {
         super.viewDidLoad()
         
         fetchStoredData()
-//        fetchData(forPage: currentPage)
         setupRefreshControl()
     }
 
@@ -38,10 +41,15 @@ class NewsViewController: UITableViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
-//        let cell = tableView.cellForRow(at: indexPath) as! NewsTableViewCell
+        let cell = tableView.cellForRow(at: indexPath) as! NewsTableViewCell
         let article = news?.articles[indexPath.row]
+        
         guard let newsDetailVC = segue.destination as? NewsDetailViewController else { return }
         newsDetailVC.article = article
+        
+        cell.updateViewsCounterValue(forKey: article?.url ?? "")
+        newsDetailVC.counter = cell.viewsCounter
+        newsDetailVC.delegate = self
     }
     
     // MARK: - IB Actions
@@ -49,11 +57,9 @@ class NewsViewController: UITableViewController {
         if sender.tag == 1, currentPage < 5 {
             currentPage += 1
             fetchStoredData()
-//            fetchData(forPage: currentPage)
         } else if sender.tag == 0, currentPage > 1 {
             currentPage -= 1
             fetchStoredData()
-//            fetchData(forPage: currentPage)
         }
     }
     
@@ -94,5 +100,12 @@ extension NewsViewController {
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl?.addTarget(self, action: #selector(downloadData), for: .valueChanged)
+    }
+}
+
+// MARK: - NewsDetailViewControllerDelegate
+extension NewsViewController: NewsDetailViewControllerDelegate {
+    func reloadData() {
+        tableView.reloadData()
     }
 }
